@@ -56,7 +56,7 @@ const student = {
     program: {
         name: "IPD",
         duration: "12 months",
-        noOfCOurses: 10,
+        noOfCourses: 10,
         campus: {
             name: "john abbott",
             rating: "5/5",
@@ -78,3 +78,38 @@ student.program.name;
 
 // Access first course
 student.courses[0];
+
+// ========================== Functions
+
+function adder(x,y) {
+    const sum = x+y;
+    return sum;
+}
+adder(5,10);
+
+const adder2 = function (x,y) {
+    const sum = x+y;
+    return sum;
+}
+adder2(5,10);
+
+// Using fat arrow operator
+const adder3 =  (x,y) =>  {
+    const sum = x+y;
+    return sum;
+}
+adder3(5,10);
+
+const numbers = [1,2,3,4,5,6,7,8,9];
+
+numbers.forEach(function(number) {
+    console.log(number*3);
+})
+
+numbers.forEach((number) => {
+    console.log(number*3);
+})
+
+numbers.forEach(number => {
+    console.log(number*3);
+})
