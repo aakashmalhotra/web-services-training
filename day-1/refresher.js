@@ -101,15 +101,49 @@ const adder3 =  (x,y) =>  {
 adder3(5,10);
 
 const numbers = [1,2,3,4,5,6,7,8,9];
+numbers.push(10);
+numbers[10] = 11;
+numbers[5] = 88;
+
+// Method to 
 
 numbers.forEach(function(number) {
     console.log(number*3);
-})
+});
 
+// With fat arraow operator
 numbers.forEach((number) => {
     console.log(number*3);
-})
+});
 
+// Paranthesis are optional if only one parameter
 numbers.forEach(number => {
     console.log(number*3);
-})
+});
+
+// Curly brackets are optional if only statement in the function
+numbers.forEach(number => console.log(number*3));
+
+// 
+const students = [
+    {
+        name: "superwoman",
+        marks: 90
+    },
+    {
+        name: "flash",
+        marks: 70
+    },
+    {
+        name: "batman",
+        marks: 77
+    },
+    {
+        name: "superman",
+        marks: 60
+    },
+    {
+        name: "arrow",
+        marks: 94
+    }
+]
