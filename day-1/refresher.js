@@ -122,7 +122,7 @@ numbers.forEach(number => {
 });
 
 // Curly brackets are optional if only statement in the function
-numbers.forEach(number => console.log(number*3));
+numbers.forEach(number =>  console.log(number*3));
 
 // 
 const students = [
@@ -147,3 +147,7 @@ const students = [
         marks: 94
     }
 ]
+
+// Q1: Sort all the students by marks from highest to lowest using sort method
+// Q2: Filter and display all the students with marks greater than 80 using filter method
+// Q3: Create a new array from the array above in which the marks of all studetns is 5 more than current marks using map method.
