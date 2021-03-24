@@ -65,7 +65,36 @@ router.delete('/:superHeroName', function(req, res) {
 // In-class assignment
 
 // Write an api to fetch one specific user by name - get api
+
+
+
 // Write an api to edit one specific user by name - put api
+router.put('/:heroName', function(req,res){  
+  const foundIndex  = users.findIndex( user => user.name === req.params.heroName);
+  if(foundIndex < 0) {
+    res.json({resp: "user not found"});
+  }
+  else {
+    users[foundIndex] = req.body;
+    res.json({users: users})
+  }
+});
+
+router.patch('/:heroName', function(req,res){  
+  const foundIndex  = users.findIndex( user => user.name === req.params.heroName);
+  if(foundIndex < 0) {
+    res.json({resp: "user not found"});
+  }
+  else {
+    if(req.body.name) {
+      users[foundIndex].name = req.body.name;
+    }
+    if(req.body.age) {
+      users[foundIndex].age = req.body.age;
+    }
+    res.json({users: users})
+  }
+});
 
 // Assignment
 // Create api for orders 
