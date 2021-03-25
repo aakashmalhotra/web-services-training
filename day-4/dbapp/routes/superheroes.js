@@ -4,10 +4,15 @@ const sql = require('../db');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  sql.query("select * from superheros", function(error, results, fields){
+  // sql.query("select * from superheros", function(error, results, fields){
+  //   if(error) throw error;
+  //   res.json(results);
+  // });
+  // Same as above
+  sql.query("select * from superheros", (error, results, fields) => {
     if(error) throw error;
     res.json(results);
-  })
+  });
 });
 
 module.exports = router;

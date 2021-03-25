@@ -11,8 +11,14 @@ var connection = mysql.createConnection({
 });
 
 connection.connect(function(err) {
-    if (err) throw err;
-    console.log("DB connection successful");
+    if (err) {
+        console.log("DB dieeeddddd!!! Save the world!!");
+        throw err;
+    }
+    else {
+        console.log("DB connection successful");
+    }
+    
 });
 
 module.exports = connection;
