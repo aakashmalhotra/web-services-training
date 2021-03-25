@@ -3,7 +3,7 @@ var router = express.Router();
 const sql = require('../db');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   // sql.query("select * from superheros", function(error, results, fields){
   //   if(error) throw error;
   //   res.json(results);
@@ -26,12 +26,14 @@ router.get('/', function(req, res, next) {
 // })
 
 router.post('/', function(req, res) {
-  //var data = req.body;
-  var data = req.body;
+  const data = req.body;
   sql.query('INSERT INTO superheros SET ?', data, function(error, results, fields) {
       if (error) throw error;
       res.json(results);
   });
 });
+
+// Delete one superhero by id
+// edit one superhero id
 
 module.exports = router;
