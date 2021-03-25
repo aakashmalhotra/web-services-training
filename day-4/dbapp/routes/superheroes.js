@@ -15,4 +15,23 @@ router.get('/', function(req, res, next) {
   });
 });
 
+// router.post('/', (req,res) => {
+  
+//   const sqlString = `INSERT INTO superheros (name, age, image_url) VALUES ('${req.body.name}', '${req.body.age}', '${req.body.image_url}')`;
+  
+//   sql.query(sqlString, (error, results) => {
+//     if(error) throw error;
+//     res.json(results);
+//   });
+// })
+
+router.post('/', function(req, res) {
+  //var data = req.body;
+  var data = req.body;
+  sql.query('INSERT INTO superheros SET ?', data, function(error, results, fields) {
+      if (error) throw error;
+      res.json(results);
+  });
+});
+
 module.exports = router;
