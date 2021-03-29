@@ -1,36 +1,45 @@
-var express = require('express');
-const { query } = require('../db');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const sql = require('../db');
 
+// // localhost:3000/heroes/3
+// router.get('/:id', function (req, res) {
+// });
+
+// // localhost:3000/heroes/skuid/jwt5935
+// router.get('/skuid/:skuId', function (req, res) {
+// });
+
+
+
 /* GET users listing. */
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   // sql.query("select * from superheros", function(error, results, fields){
   //   if(error) throw error;
   //   res.json(results);
   // });
   // Same as above
   sql.query("select * from superheros", (error, results, fields) => {
-    if(error) throw error;
+    if (error) throw error;
     res.json(results);
   });
 });
 
 // router.post('/', (req,res) => {
-  
+
 //   const sqlString = `INSERT INTO superheros (name, age, image_url) VALUES ('${req.body.name}', '${req.body.age}', '${req.body.image_url}')`;
-  
+
 //   sql.query(sqlString, (error, results) => {
 //     if(error) throw error;
 //     res.json(results);
 //   });
 // })
 
-router.post('/', function(req, res) {
+router.post('/', function (req, res) {
   const data = req.body;
-  sql.query('INSERT INTO superheros SET ?', data, function(error, results, fields) {
-      if (error) throw error;
-      res.json(results);
+  sql.query('INSERT INTO superheros SET ?', data, function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
   });
 });
 
@@ -56,7 +65,7 @@ router.post('/', function(req, res) {
 //   const body = req.body;
 //   sql.query('UPDATE superheros SET name=?, age=?, image_url=? where id=?', 
 //   [body.name, body.age, body.image_url, req.params.id], 
-  
+
 //   function(error, results, fields) {
 //       if (error) throw error;
 //       res.json(results);
@@ -83,7 +92,7 @@ router.post('/', function(req, res) {
 //   const byId= req.params.heroId;
 //   const updateData=req.body;
 
-//   var sqlString = `UPDATE superheros SET name=?, age=?, image_url=? WHERE id= ?`;
+//   const sqlString = `UPDATE superheros SET name=?, age=?, image_url=? WHERE id= ?`;
 //   sql.query(sqlString, [updateData.name,updateData.age,updateData.image_url,byId], function (err, data) {
 //     if (err) throw err;
 //     res.json(results);
@@ -93,8 +102,8 @@ router.post('/', function(req, res) {
 
 // router.put('/:superHeroId', function(req, res) {
 //   console.log(req.params);
-//   var sqlString = `UPDATE superheros SET name = '${req.body.name}', age  = '${req.body.age}', image_url = '${req.body.image_url}' WHERE id = ${req.params.superHeroId}`;
-  
+//   const sqlString = `UPDATE superheros SET name = '${req.body.name}', age  = '${req.body.age}', image_url = '${req.body.image_url}' WHERE id = ${req.params.superHeroId}`;
+
 //   sql.query(sqlString, function (error, result) {
 //     if (error) throw error;
 //    res.json(result);
@@ -102,15 +111,15 @@ router.post('/', function(req, res) {
 // });
 
 
-router.delete('/:id', function(req, res) {
-    console.log(req.params);
-    const heroid = req.params.id;
-    console.log(heroid);
+router.delete('/:id', function (req, res) {
+  console.log(req.params);
+  const heroid = req.params.id;
+  console.log(heroid);
 
-    sql.query('DELETE FROM superheros WHERE id=?',heroid, function(error, results, fields){
-      if (error) throw error;
-      res.json(results);
-    })
+  sql.query('DELETE FROM superheros WHERE id=?', heroid, function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  })
 });
 
 module.exports = router;
