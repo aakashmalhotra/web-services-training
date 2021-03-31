@@ -1,0 +1,2 @@
+COMMAND   PID   USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+node    65269 aakash   35u  IPv6 0x5e3496ab275d64e7      0t0  TCP *:hbci (LISTEN)
