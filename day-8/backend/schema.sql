@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `users` (
  
 ALTER TABLE `users` ADD PRIMARY KEY (`id`);
 ALTER TABLE `users` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-ALTER TABLE `users` MODIFY `email` varchar(200) UNIQUE;
+ALTER TABLE `users` MODIFY `email` varchar(200) UNIQUE NOT NULL;
 
 INSERT INTO `users` (`id`, `email`,`name`, `age`, `password`) VALUES
 (1, 'batgirl@gmail.com' ,'Batgirl', 30, 'chocolate' ),
