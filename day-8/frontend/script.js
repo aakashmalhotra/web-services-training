@@ -10,9 +10,12 @@ function createAccount() {
         url: `${HOST}/users`,
         data: { name: name, email: email, age: age, password: password }
     })
-        .done((msg) => {
+        .done((response) => {
+            // API was successful
             alert("user created");
-        }).fail((jqXHR, textStatus) => {
-            console.log(jqXHR, textStatus);
+        }).fail((xhrObj, textStatus) => {
+            // API sends an error . Rrsponse code in 400s or 500s
+            if (xhrObj && xhrObj.responseJSON && xhrObj.responseJSON.message)
+                alert(xhrObj.responseJSON.message);
         });
 }
