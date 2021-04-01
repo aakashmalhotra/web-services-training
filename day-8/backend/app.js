@@ -25,25 +25,24 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// Global/default Error handler 
 app.use((err, req, resp, next) => {
-    console.error(err);
-
-    // Check for joi errors
     if (err && err.error && err.error.isJoi) {
         resp.status(400).json({
             message: err.error.toString(),
             error: err.message
         });
     }
-    //  Other errors generated in the system
-    else {
-        resp.status(500).json({
-            message: "Something went wrong",
-            error: err.message
-        });
-    }
+    else
+        throw err;
+});
 
-})
+// Global/default Error handler 
+app.use((err, req, resp, next) => {
+    resp.status(500).json({
+        message: "Something went wrong",
+        error: err.message
+    });
+    return;
+});
 
 module.exports = app;

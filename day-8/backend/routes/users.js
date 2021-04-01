@@ -20,10 +20,21 @@ router.post('/', validator.body(createUserSchema), (req, res, next) => {
         res.status(400).send({
           message: "User already exists. Please sign in or use another email."
         });
+        return;
       }
       next(error);
-      return;
     }
+    res.json(result);
+  });
+})
+
+// GET /users/1
+router.get('/:id', (req, res, next) => {
+  sql.query('select * from users where id=?', id, (error, result) => {
+    if (error) {
+      res.status(404).send({ message: "User not found" });
+    }
+    res.blahblah();
     res.json(result);
   });
 })
